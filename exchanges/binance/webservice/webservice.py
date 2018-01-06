@@ -1,7 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
 from monix.exchanges.binance.webservice.client import Client
-from monix.exchanges.binance.webservice.exceptions import BinanceAPIException, BinanceWithdrawException
+from monix.exchanges.binance.webservice.exceptions import (
+    BinanceAPIException, BinanceWithdrawException
+)
 
 
 class BinanceWebService(object):
@@ -20,7 +22,8 @@ class BinanceWebService(object):
         depth = self.client.get_order_book(symbol=symbol)
         return depth
 
-    # place a test market buy order, to place an actual order use the create_order function
+    # place a test market buy order, to place an actual
+    # order use the create_order function
     def create_buy_test_order(self, symbol, quantity):
         order = self.client.create_test_order(
             symbol=symbol,
@@ -28,7 +31,7 @@ class BinanceWebService(object):
             type=Client.ORDER_TYPE_MARKET,
             quantity=quantity)
         return order
-    
+
     def create_new_sell_test_order(self, symbol, quantity):
         order = self.client.create_test_order(
             symbol=symbol,
@@ -43,6 +46,7 @@ class BinanceWebService(object):
             side=Client.SIDE_BUY,
             type=Client.ORDER_TYPE_MARKET,
             quantity=quantity)
+        return order
 
     def create_sell_order(self, symbol, quantity):
         order = self.client.create_order(
@@ -50,15 +54,15 @@ class BinanceWebService(object):
             side=Client.SIDE_BUY,
             type=Client.ORDER_TYPE_MARKET,
             quantity=quantity)
-    
+        return order
+
     # get all symbol prices
     def get_all_prices(self):
         prices = self.client.get_all_tickers()
         return prices
 
-
     def withdraw(self, asset, address, quantity):
-    # check docs for assumptions around withdrawals
+        # check docs for assumptions around withdrawals
         try:
             result = self.client.withdraw(
                 asset=asset,
@@ -91,4 +95,3 @@ class BinanceWebService(object):
     # bm = BinanceSocketManager(client)
     # bm.start_aggtrade_socket(symbol=symbol)
     # bm.start()
-    

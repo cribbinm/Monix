@@ -6,7 +6,7 @@ from django.db import models
 
 
 class BinanceConfiguration(models.Model):
-    user = models.ForeignKey(User)
+    # user = models.ForeignKey(User)
     api_key = models.CharField(
         max_length=100, blank=True, unique=True, null=True,
         help_text='Binance API key'

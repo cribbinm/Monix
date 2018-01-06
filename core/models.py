@@ -7,6 +7,7 @@ from django.db import models
 class User(object):
     pass
 
+
 class Coin(models.Model):
     name = models.CharField(max_length=30)
     code = models.CharField(max_length=7)
@@ -15,7 +16,7 @@ class Coin(models.Model):
     usd_price = models.DecimalField(max_digits=40, decimal_places=20)
     eur_price = models.DecimalField(max_digits=40, decimal_places=20)
 
-    
+
 class Asset(Coin):
     amount = models.DecimalField(max_digits=40, decimal_places=20)
 
